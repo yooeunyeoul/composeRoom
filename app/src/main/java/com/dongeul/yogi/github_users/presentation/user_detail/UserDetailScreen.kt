@@ -1,7 +1,8 @@
 package com.dongeul.yogi.github_users.presentation.user_detail
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -9,11 +10,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import coil.compose.rememberAsyncImagePainter
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.dongeul.yogi.github_users.presentation.components.DefaultLinkifyText
 import com.dongeul.yogi.github_users.presentation.components.HeartIcon
 
@@ -23,7 +26,7 @@ fun UserDetailScreen(
     viewModel: UserDetailViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
-
+    val scrollState = rememberScrollState()
 
     Box(Modifier.fillMaxSize()) {
 
@@ -31,14 +34,15 @@ fun UserDetailScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(start = 16.dp, end = 16.dp)
+                .verticalScroll(scrollState),
         ) {
             Box() {
-                Image(
-                    painter = rememberAsyncImagePainter(state.user?.avatarUrl),
+                AsyncImage(
+                    model = ImageRequest.Builder(LocalContext.current).data(state.user?.avatarUrl)
+                        .crossfade(true).build(),
+                    contentScale = ContentScale.FillWidth,
                     contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    contentScale = ContentScale.FillWidth
+                    modifier = Modifier.fillMaxWidth()
                 )
 
                 HeartIcon(
