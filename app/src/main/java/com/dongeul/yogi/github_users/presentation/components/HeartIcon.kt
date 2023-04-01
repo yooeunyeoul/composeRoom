@@ -12,8 +12,8 @@ import com.dongeul.yogi.R
 import com.dongeul.yogi.github_users.domain.model.User
 
 @Composable
-fun HeartIcon(user: User?,onItemClick: (User?) -> Unit) {
-    IconButton(onClick = {
+fun HeartIcon(modifier: Modifier = Modifier, user: User?, onItemClick: (User?) -> Unit) {
+    IconButton(modifier = modifier, onClick = {
         onItemClick(user)
     }) {
         Icon(
@@ -23,9 +23,8 @@ fun HeartIcon(user: User?,onItemClick: (User?) -> Unit) {
             ),
             contentDescription = null,
             modifier = Modifier
-                .size(32.dp)
-            ,
-            tint = if(user?.isLike == true) Color.Red else Color.Gray
+                .size(32.dp),
+            tint = if (user?.isLike == true) Color.Red else Color.Gray
         )
     }
 }

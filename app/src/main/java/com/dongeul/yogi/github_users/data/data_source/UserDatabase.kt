@@ -2,7 +2,6 @@ package com.dongeul.yogi.github_users.data.data_source
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.dongeul.yogi.github_users.domain.model.LikeUser
 import com.dongeul.yogi.github_users.domain.model.User
 
 @Database(
