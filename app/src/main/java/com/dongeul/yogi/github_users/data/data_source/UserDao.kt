@@ -12,7 +12,7 @@ interface UserDao {
     fun getUsers(): Flow<List<User>>
 
     @Query("SELECT * FROM User WHERE id = :id")
-    suspend fun getUserById(id: Int): User?
+    fun getUserById(id: Int): Flow<User?>
 
     @Query("UPDATE User SET isLike =:isLike WHERE id=:id ")
     suspend fun userLikeUpdate(id: Int, isLike: Boolean)
@@ -27,7 +27,6 @@ interface UserDao {
     suspend fun insertOrUpdateUsers(users: List<User>) {
         users.forEach { user ->
             if (insertUser(user) < 1) {
-                Log.e("asdfasdfasdf","asdfasdfsadfsadfsadfasdf")
                 updateUser(
                     avatarUrl = user.avatarUrl ?: "",
                     htmlUrl = user.htmlUrl ?: "",
@@ -37,9 +36,5 @@ interface UserDao {
             }
         }
     }
-
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertUsers(users: List<User>)
 
 }

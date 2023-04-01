@@ -15,13 +15,12 @@ class UserRepositoryImpl @Inject constructor(
     override suspend fun getItems(): ItemsDto =
         api.getItem()
 
-
     override fun getUsers(): Flow<List<User>> =
         dao.getUsers()
 
-    override suspend fun insertUsers(users: List<User>) {
-        dao.insertUsers(users = users)
-    }
+    override fun getUserById(id: Int): Flow<User?> =
+        dao.getUserById(id)
+
 
     override suspend fun insertOrUpdateUsers(users: List<User>) {
         dao.insertOrUpdateUsers(users = users)

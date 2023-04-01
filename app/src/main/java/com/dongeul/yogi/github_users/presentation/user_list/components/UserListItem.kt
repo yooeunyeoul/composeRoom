@@ -13,6 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,6 +22,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.dongeul.yogi.R
 import com.dongeul.yogi.github_users.domain.model.User
+import com.dongeul.yogi.github_users.presentation.components.HeartIcon
 
 @Composable
 fun UserListItem(
@@ -29,9 +31,6 @@ fun UserListItem(
     onHeartClick: (User?) -> Unit
 ) {
 
-    val interactionSource = remember {
-        MutableInteractionSource()
-    }
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -56,22 +55,10 @@ fun UserListItem(
                 fontSize = 16.sp
             )
         }
-        Icon(
-            painter = painterResource(
-                id = if (user?.isLike == true) R.drawable.icon_heartfilled
-                else R.drawable.icon_heart
-            ),
-            contentDescription = null,
-            modifier = Modifier
-                .size(32.dp)
-                .clickable(
-                    interactionSource = interactionSource,
-                    indication = null
-                ) {
-                    onHeartClick(user)
-                }
-        )
 
+        HeartIcon(user = user, onItemClick = {
+            onHeartClick(user)
+        })
 
     }
 }

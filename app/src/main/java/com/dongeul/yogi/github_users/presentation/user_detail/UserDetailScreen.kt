@@ -1,11 +1,10 @@
 package com.dongeul.yogi.github_users.presentation.user_detail
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -15,9 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.dongeul.yogi.github_users.common.Resource
-import com.dongeul.yogi.github_users.presentation.Screen
-import com.dongeul.yogi.github_users.presentation.user_list.components.UserListItem
+import coil.compose.rememberAsyncImagePainter
+import com.dongeul.yogi.github_users.presentation.components.HeartIcon
 
 @Composable
 fun UserDetailScreen(
@@ -29,11 +27,19 @@ fun UserDetailScreen(
 
     Box(Modifier.fillMaxSize()) {
 
-        LazyColumn(Modifier.fillMaxWidth()) {
-            item {
-                Text(text = "header", style = MaterialTheme.typography.body1)
-            }
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Box() {
+                Image(
+                    painter = rememberAsyncImagePainter(state.user?.avatarUrl),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                )
 
+                HeartIcon(user = state.user, onItemClick = {
+                    viewModel.updateUser(user = state.user)
+                })
+            }
         }
 
         if (state.error.isNotBlank()) {
