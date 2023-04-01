@@ -2,10 +2,9 @@ package com.dongeul.yogi.github_users.di
 
 import android.app.Application
 import androidx.room.Room
-import com.dongeul.yogi.BuildConfig
 import com.dongeul.yogi.github_users.common.Constants
-import com.dongeul.yogi.github_users.data.data_source.UserDatabase
-import com.dongeul.yogi.github_users.data.remote.GithubApi
+import com.dongeul.yogi.github_users.data.data_source.local.UserDatabase
+import com.dongeul.yogi.github_users.data.data_source.remote.GithubApi
 import com.dongeul.yogi.github_users.data.repository.UserRepositoryImpl
 import com.dongeul.yogi.github_users.domain.repository.UserRepository
 import dagger.Module
@@ -16,7 +15,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -34,7 +32,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideOkHttp(app: Application): OkHttpClient {
+    fun provideOkHttp(): OkHttpClient {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
         return OkHttpClient.Builder().addInterceptor(interceptor)

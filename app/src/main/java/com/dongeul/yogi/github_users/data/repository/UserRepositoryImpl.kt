@@ -1,8 +1,8 @@
 package com.dongeul.yogi.github_users.data.repository
 
-import com.dongeul.yogi.github_users.data.data_source.UserDao
-import com.dongeul.yogi.github_users.data.remote.GithubApi
-import com.dongeul.yogi.github_users.data.remote.dto.ItemsDto
+import com.dongeul.yogi.github_users.data.data_source.local.UserDao
+import com.dongeul.yogi.github_users.data.data_source.remote.GithubApi
+import com.dongeul.yogi.github_users.data.data_source.remote.dto.ItemsDto
 import com.dongeul.yogi.github_users.domain.model.User
 import com.dongeul.yogi.github_users.domain.repository.UserRepository
 import kotlinx.coroutines.flow.Flow

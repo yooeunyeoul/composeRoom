@@ -1,4 +1,4 @@
-package com.dongeul.yogi.github_users.data.data_source
+package com.dongeul.yogi.github_users.data.data_source.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

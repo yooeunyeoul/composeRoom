@@ -3,7 +3,7 @@ package com.dongeul.yogi.github_users.domain.model
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
-import com.dongeul.yogi.github_users.data.remote.dto.UserDto
+import com.dongeul.yogi.github_users.data.data_source.remote.dto.UserDto
 
 @Entity
 data class User(

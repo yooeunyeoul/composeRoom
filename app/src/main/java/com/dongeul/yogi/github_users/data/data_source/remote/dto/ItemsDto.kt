@@ -1,4 +1,4 @@
-package com.dongeul.yogi.github_users.data.remote.dto
+package com.dongeul.yogi.github_users.data.data_source.remote.dto
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

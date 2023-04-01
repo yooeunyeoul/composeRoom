@@ -1,6 +1,5 @@
-package com.dongeul.yogi.github_users.data.data_source
+package com.dongeul.yogi.github_users.data.data_source.local
 
-import android.util.Log
 import androidx.room.*
 import com.dongeul.yogi.github_users.domain.model.User
 import kotlinx.coroutines.flow.Flow
