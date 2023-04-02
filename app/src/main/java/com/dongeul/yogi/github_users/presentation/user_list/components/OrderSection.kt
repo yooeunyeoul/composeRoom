@@ -3,7 +3,9 @@ package com.dongeul.yogi.github_users.presentation.user_list.components
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import com.dongeul.yogi.github_users.common.TestTags
 import com.dongeul.yogi.github_users.domain.util.UserOrder
 
 @Composable
@@ -27,7 +29,7 @@ fun OrderSection(
             DefaultRadioButton(
                 text = "LIKE",
                 selected = userOrder is UserOrder.OrderLike,
-                onSelect = { onOrderChange(UserOrder.OrderLike) }
+                onSelect = { onOrderChange(UserOrder.OrderLike)},
             )
             Spacer(modifier = Modifier.width(8.dp))
             DefaultRadioButton(

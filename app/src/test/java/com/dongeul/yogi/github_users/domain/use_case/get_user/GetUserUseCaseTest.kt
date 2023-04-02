@@ -5,6 +5,7 @@ import com.dongeul.yogi.github_users.domain.model.User
 import com.dongeul.yogi.github_users.domain.model.toUser
 import com.dongeul.yogi.github_users.domain.repository.UserRepository
 import com.dongeul.yogi.github_users.domain.use_case.get_user.data.repository.FakeUserRepository
+import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
@@ -51,8 +52,7 @@ class GetUserUseCaseTest {
             val collectJob = launch { user.collect() }
             advanceUntilIdle()
             collectJob.cancel()
-//            assertThat(lastItem?.id).isEqualTo(1)
-            println("asdfasdf"+lastItem)
+            assertThat(lastItem?.id).isEqualTo(1)
 
         }
     }

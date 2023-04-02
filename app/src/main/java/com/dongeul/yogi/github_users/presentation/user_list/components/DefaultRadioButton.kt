@@ -10,7 +10,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import com.dongeul.yogi.github_users.common.TestTags
 
 @Composable
 fun DefaultRadioButton(
@@ -29,7 +31,8 @@ fun DefaultRadioButton(
             colors = RadioButtonDefaults.colors(
                 selectedColor = MaterialTheme.colors.primary,
                 unselectedColor = MaterialTheme.colors.onBackground
-            )
+            ),
+            modifier = modifier.testTag(TestTags.LIKE_SORT)
         )
         Spacer(modifier = Modifier.width(8.dp))
         Text(text = text, style = MaterialTheme.typography.body1)

@@ -11,12 +11,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.dongeul.yogi.github_users.common.TestTags
 import com.dongeul.yogi.github_users.domain.model.User
 import com.dongeul.yogi.github_users.presentation.components.HeartIcon
 
@@ -31,7 +33,8 @@ fun UserListItem(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onItemClick(user) }
-            .padding(22.dp),
+            .padding(22.dp)
+            .testTag(tag = TestTags.USER_ITEM),
         verticalAlignment = Alignment.CenterVertically
     ) {
         AsyncImage(

@@ -11,11 +11,13 @@ import androidx.compose.material.icons.filled.Sort
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.dongeul.yogi.github_users.common.Constants
+import com.dongeul.yogi.github_users.common.TestTags
 import com.dongeul.yogi.github_users.presentation.Screen
 import com.dongeul.yogi.github_users.presentation.user_list.components.OrderSection
 import com.dongeul.yogi.github_users.presentation.user_list.components.UserListItem
@@ -61,7 +63,8 @@ fun UserListScreen(
                 OrderSection(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 16.dp),
+                        .padding(vertical = 16.dp)
+                        .testTag(TestTags.ORDER_SECTION),
                     userOrder = state.userOrder,
                     onOrderChange = {
                         viewModel.orderEvent(it)
@@ -70,7 +73,7 @@ fun UserListScreen(
             }
 
 
-            LazyColumn(Modifier.fillMaxWidth()) {
+            LazyColumn(Modifier.fillMaxWidth().testTag(TestTags.LAZY_COLUMN)) {
                 items(state.users) { user ->
                     UserListItem(onItemClick = {
                         navController.navigate(Screen.UserDetailScreen.route + "?${Constants.PARAM_USER_ID}=${user.id}")

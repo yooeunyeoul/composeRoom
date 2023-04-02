@@ -11,12 +11,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.dongeul.yogi.github_users.common.TestTags
 import com.dongeul.yogi.github_users.presentation.components.DefaultLinkifyText
 import com.dongeul.yogi.github_users.presentation.components.HeartIcon
 
@@ -46,7 +48,7 @@ fun UserDetailScreen(
                 )
 
                 HeartIcon(
-                    modifier = Modifier.align(Alignment.BottomEnd),
+                    modifier = Modifier.align(Alignment.BottomEnd).testTag(TestTags.HEART),
                     user = state.user,
                     onItemClick = {
                         viewModel.updateUser(user = state.user)
