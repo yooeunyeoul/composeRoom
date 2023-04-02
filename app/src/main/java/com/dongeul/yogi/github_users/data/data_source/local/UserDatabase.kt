@@ -8,7 +8,6 @@ import com.dongeul.yogi.github_users.domain.model.User
     entities = [User::class],
     version = 1
 )
-
 abstract class UserDatabase : RoomDatabase() {
     abstract val userDao: UserDao
 
